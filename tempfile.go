@@ -6,7 +6,7 @@ package ioutil
 
 import (
 	"os"
-	"path/filepath"
+	"path"
 	"strconv"
 	"sync"
 	"time"
@@ -56,7 +56,7 @@ func TempFile(fs absfs.FileSystem, dir, prefix string) (f absfs.File, err error)
 
 	nconflict := 0
 	for i := 0; i < 10000; i++ {
-		name := filepath.Join(dir, prefix+nextSuffix())
+		name := path.Join(dir, prefix+nextSuffix())
 		f, err = fs.OpenFile(name, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0600)
 		if os.IsExist(err) {
 			if nconflict++; nconflict > 10 {
@@ -88,7 +88,7 @@ func TempDir(fs absfs.FileSystem, dir, prefix string) (name string, err error) {
 
 	nconflict := 0
 	for i := 0; i < 10000; i++ {
-		try := filepath.Join(dir, prefix+nextSuffix())
+		try := path.Join(dir, prefix+nextSuffix())
 		err = fs.Mkdir(try, 0700)
 		if os.IsExist(err) {
 			if nconflict++; nconflict > 10 {

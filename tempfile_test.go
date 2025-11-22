@@ -6,7 +6,7 @@ package ioutil
 
 import (
 	"os"
-	"path/filepath"
+	"path"
 	"regexp"
 	"testing"
 )
@@ -24,7 +24,7 @@ func TestTempFile(t *testing.T) {
 	}
 	defer fs.RemoveAll(dir)
 
-	nonexistentDir := filepath.Join(dir, "_not_exists_")
+	nonexistentDir := path.Join(dir, "_not_exists_")
 	f, err := TempFile(fs, nonexistentDir, "foo")
 	if f != nil || err == nil {
 		t.Errorf("TempFile(%q, `foo`) = %v, %v", nonexistentDir, f, err)
@@ -38,7 +38,7 @@ func TestTempFile(t *testing.T) {
 	if f != nil {
 		f.Close()
 		fs.Remove(f.Name())
-		re := regexp.MustCompile("^" + regexp.QuoteMeta(filepath.Join(dir, "ioutil_test")) + "[0-9]+$")
+		re := regexp.MustCompile("^" + regexp.QuoteMeta(path.Join(dir, "ioutil_test")) + "[0-9]+$")
 		if !re.MatchString(f.Name()) {
 			t.Errorf("TempFile(`"+dir+"`, `ioutil_test`) created bad name %s", f.Name())
 		}
@@ -59,7 +59,7 @@ func TestTempDir(t *testing.T) {
 	}
 	if name != "" {
 		fs.Remove(name)
-		re := regexp.MustCompile("^" + regexp.QuoteMeta(filepath.Join(dir, "ioutil_test")) + "[0-9]+$")
+		re := regexp.MustCompile("^" + regexp.QuoteMeta(path.Join(dir, "ioutil_test")) + "[0-9]+$")
 		if !re.MatchString(name) {
 			t.Errorf("TempDir(`"+dir+"`, `ioutil_test`) created bad name %s", name)
 		}
@@ -76,7 +76,7 @@ func TestTempDir_BadDir(t *testing.T) {
 	}
 	defer fs.RemoveAll(dir)
 
-	badDir := filepath.Join(dir, "not-exist")
+	badDir := path.Join(dir, "not-exist")
 	_, err = TempDir(fs, badDir, "foo")
 	if pe, ok := err.(*os.PathError); !ok || !os.IsNotExist(err) || pe.Path != badDir {
 		t.Errorf("TempDir error = %#v; want PathError for path %q satisifying os.IsNotExist", err, badDir)
