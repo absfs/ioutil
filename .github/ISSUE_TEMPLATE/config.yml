@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question or Discussion
+    url: https://github.com/absfs/ioutil/discussions
+    about: Ask questions or discuss ideas with the community
+  - name: Security Vulnerability
+    url: https://github.com/absfs/ioutil/security/advisories/new
+    about: Report a security vulnerability (do not use public issues)
+  - name: absfs Documentation
+    url: https://github.com/absfs/absfs
+    about: Learn more about the absfs ecosystem
