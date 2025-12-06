@@ -34,3 +34,8 @@ go.work
 # Build artifacts
 dist/
 build/
+
+# Claude AI metadata
+.claude/
+CLAUDE.md
+.project_meta/
