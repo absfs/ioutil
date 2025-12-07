@@ -1,9 +1,8 @@
 # ioutil - AbsFs FileSystem Utility Functions
 
-[![CI](https://github.com/absfs/ioutil/workflows/CI/badge.svg)](https://github.com/absfs/ioutil/actions)
 [![Go Reference](https://pkg.go.dev/badge/github.com/absfs/ioutil.svg)](https://pkg.go.dev/github.com/absfs/ioutil)
 [![Go Report Card](https://goreportcard.com/badge/github.com/absfs/ioutil)](https://goreportcard.com/report/github.com/absfs/ioutil)
-[![codecov](https://codecov.io/gh/absfs/ioutil/branch/master/graph/badge.svg)](https://codecov.io/gh/absfs/ioutil)
+[![CI](https://github.com/absfs/ioutil/actions/workflows/ci.yml/badge.svg)](https://github.com/absfs/ioutil/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 Package `github.com/absfs/ioutil` implements the standard library `ioutil` functions for the [absfs.FileSystem](https://github.com/absfs/absfs) interface, providing a familiar API for working with abstract filesystems.
